@@ -1,0 +1,23 @@
+{
+  "name": "flashcard-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "BasicCard.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradisrad83/flashcard-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradisrad83/flashcard-generator/issues"
+  },
+  "homepage": "https://github.com/bradisrad83/flashcard-generator#readme",
+  "dependencies": {
+    "inquirer": "^3.0.6"
+  }
+}

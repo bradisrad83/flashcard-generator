@@ -1,0 +1,12 @@
+//Psuedocode for week 11 homework
+//create 10 trivia questions into an array/object
+//    properties are front/back (for basic)
+//    and text/cloze/partial (for clozecard)
+//To see if it works we will display all questions
+//    Both basic and clozecard
+//    Create cards using constructors
+//Using inquirer prompt for each question (switch for basic/clozecard----or if/else)
+//Take user input to compare to the correct answer
+//++ for correct
+//At the end display the number of correct answers
+//Log the results
