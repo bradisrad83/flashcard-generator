@@ -17,6 +17,8 @@
 //On run:
 //    create card objecs with properties
 //    display them back
+
+//global variables
 var questions = require("./questions");
 var BasicCard = require("./BasicCard");
 var ClozeCard = require("./ClozeCard");
@@ -26,16 +28,17 @@ var basic = [];
 var clozed = [];
 var correct = 0;
 
+//loop to push basic questions into the basic array
 for (i = 0; i < questions.basicQuestions.length; i++) {
     var basiccard = new BasicCard(questions.basicQuestions[i].front, questions.basicQuestions[i].back);
     basic.push(basiccard);
 }
-
+//loop to push clozed questions into the clozed array
 for (j = 0; j < questions.clozeQuestions.length; j++) {
     var clozecard = new ClozeCard(questions.clozeQuestions[j].full, questions.clozeQuestions[j].cloze);
     clozed.push(clozecard);
 }
-
+//main logic of the game
 function game() {
     inquirer.prompt([
         //This will be the user choice for Basic or Clozed questions
@@ -46,6 +49,7 @@ function game() {
             name: "input"
         }
     ]).then(function(data) {
+      //user chooses to either play with basic(easy) or clozed(difficult) cards
         if (data.input === "Basic") {
             easy();
         } else {
@@ -53,7 +57,7 @@ function game() {
         }
     });
 }
-
+//function to run the difficult game
 function difficult() {
     inquirer.prompt([{
         type: "input",
@@ -78,7 +82,7 @@ function difficult() {
         }
     });
 }
-
+//function to run the easy game
 function easy() {
     inquirer.prompt([{
         type: "input",
@@ -101,7 +105,7 @@ function easy() {
         }
     })
 }
-
+//function that prompts the user to play again  
 function playagain() {
     inquirer.prompt([{
         type: "list",
