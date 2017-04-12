@@ -1,18 +1,3 @@
-//function BasicCard(front, back) {
-//    this.front = front;
-//    this.back = back;
-
-//}
-
-//function ClozeCard(text, cloze) {
-
-//}
-//var firstPresident = new BasicCard(
-//    "Who was the first president of the United States?", "George Washington");
-//console.log(firstPresident.front);
-//console.log(firstPresident.back);
-
-
 //CLI interface
 //On run:
 //    create card objecs with properties
@@ -24,22 +9,16 @@ var BasicCard = require("./BasicCard");
 var ClozeCard = require("./ClozeCard");
 var inquirer = require("inquirer");
 var counter = 0;
-var basic = [];
+var basic = [];       
 var clozed = [];
 var correct = 0;
 
-//loop to push basic questions into the basic array
-for (i = 0; i < questions.basicQuestions.length; i++) {
-    var basiccard = new BasicCard(questions.basicQuestions[i].front, questions.basicQuestions[i].back);
-    basic.push(basiccard);
-}
-//loop to push clozed questions into the clozed array
-for (j = 0; j < questions.clozeQuestions.length; j++) {
-    var clozecard = new ClozeCard(questions.clozeQuestions[j].full, questions.clozeQuestions[j].cloze);
-    clozed.push(clozecard);
-}
+
+
 //main logic of the game
 function game() {
+  easyQuestions();
+  hardQuestions();
     inquirer.prompt([
         //This will be the user choice for Basic or Clozed questions
         {
@@ -49,7 +28,7 @@ function game() {
             name: "input"
         }
     ]).then(function(data) {
-      //user chooses to either play with basic(easy) or clozed(difficult) cards
+        //user chooses to either play with basic(easy) or clozed(difficult) cards
         if (data.input === "Basic") {
             easy();
         } else {
@@ -115,14 +94,34 @@ function playagain() {
         name: "decision"
     }]).then(function(information) {
         if (information.decision === "Yes") {
-            counter=0;
+            counter = 0;
+            correct = 0;
+            basic = [];
+            clozed = [];
             game();
         } else {
             console.log("Thanks for playing have a wonderful day");
         }
     })
 }
+//function to get the basic questions
+function easyQuestions() {
+    //loop to push basic questions into the basic array
+    for (i = 0; i < questions.basicQuestions.length; i++) {
+        var basiccard = new BasicCard(questions.basicQuestions[i].front, questions.basicQuestions[i].back);
+        basic.push(basiccard);
+    }
 
+}
+
+function hardQuestions() {
+    //loop to push clozed questions into the clozed array
+    for (j = 0; j < questions.clozeQuestions.length; j++) {
+        var clozecard = new ClozeCard(questions.clozeQuestions[j].full, questions.clozeQuestions[j].cloze);
+        clozed.push(clozecard);
+    }
+
+}
 
 
 game();
