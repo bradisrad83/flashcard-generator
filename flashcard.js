@@ -64,7 +64,7 @@ function difficult() {
         message: clozed[counter].partial + "\nAnswer:",
         name: "userGuess"
     }]).then(function(answer) {
-        if (answer.userGuess === clozed[counter].cloze) {
+        if (answer.userGuess.toLowerCase() === clozed[counter].cloze.toLowerCase()) {
             console.log("Correct");
             correct++;
         } else {
@@ -89,7 +89,7 @@ function easy() {
         message: basic[counter].front + "\nAnswer:",
         name: "userInput"
     }]).then(function(answer) {
-        if (answer.userInput === basic[counter].back) {
+        if (answer.userInput.toLowerCase() === basic[counter].back.toLowerCase()) {
             console.log("Correct");
             correct++;
         } else {
@@ -105,8 +105,9 @@ function easy() {
         }
     })
 }
-//function that prompts the user to play again  
+//function that prompts the user to play again
 function playagain() {
+
     inquirer.prompt([{
         type: "list",
         message: "Would you like to play again?",
@@ -114,6 +115,7 @@ function playagain() {
         name: "decision"
     }]).then(function(information) {
         if (information.decision === "Yes") {
+            counter=0;
             game();
         } else {
             console.log("Thanks for playing have a wonderful day");
