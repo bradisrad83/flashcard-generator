@@ -52,7 +52,7 @@ exports.clozeQuestions = [{
     full: "The highest possible score in a game of bowling is 300",
     cloze: "300"
 }, {
-    full: "An albitros is 3 under par in golf, on a single hole.",
+    full: "A(n) albitros is 3 under par in golf, on a single hole.",
     cloze: "albitros"
 }, {
     full: "The Princess Bride was directed by Rob Reiner",
