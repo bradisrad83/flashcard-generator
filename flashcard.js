@@ -9,7 +9,7 @@ var BasicCard = require("./BasicCard");
 var ClozeCard = require("./ClozeCard");
 var inquirer = require("inquirer");
 var counter = 0;
-var basic = [];       
+var basic = [];
 var clozed = [];
 var correct = 0;
 
@@ -43,6 +43,7 @@ function difficult() {
         message: clozed[counter].partial + "\nAnswer:",
         name: "userGuess"
     }]).then(function(answer) {
+      //put everything to lowercase for comparison values.  That way if a user doesnt capitalize they still get the correct answer
         if (answer.userGuess.toLowerCase() === clozed[counter].cloze.toLowerCase()) {
             console.log("Correct");
             correct++;
@@ -68,6 +69,7 @@ function easy() {
         message: basic[counter].front + "\nAnswer:",
         name: "userInput"
     }]).then(function(answer) {
+      //put everything to lowercase for comparison values.  That way if a user doesnt capitalize they still get the correct answer
         if (answer.userInput.toLowerCase() === basic[counter].back.toLowerCase()) {
             console.log("Correct");
             correct++;
